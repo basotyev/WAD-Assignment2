@@ -23,7 +23,7 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - app-db
     environment:
       - DATABASE_URL=postgres://postgres:secret@db:5432/app-db
     networks:

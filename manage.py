@@ -1,7 +1,25 @@
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
+import django
+from django.contrib.auth import get_user_model
+from django.db.utils import IntegrityError
+
+
+def create_superuser():
+    User = get_user_model()
+    username = 'admin'
+    email = 'admin@example.com'
+    password = 'adminpassword'
+
+    try:
+        if not User.objects.filter(username=username).exists():
+            print(f"Creating superuser {username}")
+            User.objects.create_superuser(username=username, email=email, password=password)
+        else:
+            print(f"Superuser {username} already exists")
+    except IntegrityError:
+        print("Superuser creation failed. It may already exist.")
 
 
 def main():
@@ -16,6 +34,10 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+
+    if 'runserver' in sys.argv or 'migrate' in sys.argv:
+        django.setup()
+        create_superuser()
 
 
 if __name__ == '__main__':

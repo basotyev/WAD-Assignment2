@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+      Weather History
+</title>
+</head>
+<body>
+    <h2>Recent Weather Searches</h2>
+    <ul>
+        {% for search in recent_searches %}
+            <li>
+                <strong>{{ search.city }}</strong> - {{ search.temperature }}°C
+                ({{ search.description }}), searched at {{ search.search_time }}
+            </li>
+        {% empty %}
+            <li>No recent searches found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

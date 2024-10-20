@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+</head>
+<body>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="city" placeholder="Enter city name">
+      <button type="submit">Get Weather</button>
+    </form>
+
+    {% if city %}
+      <h2>Weather in {{ city }}</h2>
+      <p>Temperature: {{ temperature }}°C</p>
+      <p>Description: {{ description }}</p>
+      <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="{{ description }}">
+    {% endif %}
+    <a href="{% url 'weather-history' %}">View Recent Weather Searches</a>
+
+</body>
+</html>

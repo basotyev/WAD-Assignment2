@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'weather.apps.WeatherConfig',
+    'task.apps.TaskConfig'
 ]
 
 MIDDLEWARE = [

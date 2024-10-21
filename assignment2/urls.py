@@ -4,7 +4,6 @@ from django.urls import include, path
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('weather/', include('weather.urls'))
-]
-urlpatterns = [
+    path('weather/', include('weather.urls')),
+    path('tasks/', include('task.urls'))
 ]

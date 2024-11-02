@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'weather.apps.WeatherConfig',
-    'task.apps.TaskConfig'
+    'task.apps.TaskConfig',
+    'blog.apps.BlogConfig'
 ]
+LOGIN_REDIRECT_URL = 'post_list'  # Redirect to the post list or any other page after login
+LOGIN_URL = 'login'               # The login URL for `login_required` decorator
+LOGOUT_REDIRECT_URL = 'post_list'  # Redirect to post list after logout
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

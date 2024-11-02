@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <a href="{% url 'post_list' %}" class="back-link">← Back to all posts</a>
+
+    <article class="post-detail">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <p class="post-meta">By {{ post.author.username }} | {{ post.created_at|date:"F j, Y" }}</p>
+
+        <div class="post-content">
+            <p>{{ post.description }}</p>
+        </div>
+
+        {% if post.links %}
+            <div class="post-links">
+                <h3>Related Links</h3>
+                <ul>
+                    {% for link in post.links %}
+                        <li><a href="{{ link }}" target="_blank" rel="noopener">{{ link }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

@@ -5,5 +5,6 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('weather/', include('weather.urls')),
-    path('tasks/', include('task.urls'))
+    path('tasks/', include('task.urls')),
+    path('blog/', include('blog.urls'))
 ]

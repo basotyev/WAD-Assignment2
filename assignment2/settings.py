@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'weather.apps.WeatherConfig',
     'task.apps.TaskConfig',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+    'drf_yasg'
 ]
 LOGIN_REDIRECT_URL = 'post_list'  # Redirect to the post list or any other page after login
 LOGIN_URL = 'login'               # The login URL for `login_required` decorator
@@ -132,3 +134,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
